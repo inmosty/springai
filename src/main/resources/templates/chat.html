@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AI 챗봇</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+        }
+        #chat-container {
+            border: 1px solid #ddd;
+            padding: 10px;
+            height: 400px;
+            overflow-y: scroll;
+        }
+        .user-message {
+            text-align: right;
+            color: blue;
+        }
+        .bot-message {
+            text-align: left;
+            color: green;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 8px;
+        }
+        button {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<h2>AI 챗봇</h2>
+<div id="chat-container"></div>
+
+<input type="text" id="userMessage" placeholder="메시지를 입력하세요..." />
+<button onclick="sendMessage()">전송</button>
+
+<script>
+    function sendMessage() {
+        let userMessage = $("#userMessage").val();
+        if (!userMessage.trim()) return;
+
+        // 사용자 메시지 화면에 추가
+        $("#chat-container").append(`<p class='user-message'>나: ${userMessage}</p>`);
+        $("#userMessage").val("");
+
+        // 서버로 메시지 전송
+        $.ajax({
+            type: "POST",
+            url: "/api/chat",
+            contentType: "application/json",
+            data: JSON.stringify({ userMessage: userMessage }),
+            success: function(response) {
+                $("#chat-container").append(`<p class='bot-message'>AI: ${response}</p>`);
+                $("#chat-container").scrollTop($("#chat-container")[0].scrollHeight);
+            }
+        });
+    }
+
+    // 엔터키 이벤트 추가
+    $("#userMessage").keypress(function(event) {
+        if (event.which === 13) {  // Enter 키 감지 (keyCode 13)
+            event.preventDefault(); // 폼 자동 제출 방지
+            sendMessage();
+        }
+    });
+</script>
+</body>
+</html>

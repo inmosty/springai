@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF 업로드</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+        }
+        #upload-container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+        }
+        #status {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<h2>PDF 파일 업로드</h2>
+<div id="upload-container">
+    <input type="file" id="pdfFile" accept="application/pdf"/>
+    <button onclick="uploadPDF()">업로드</button>
+    <p id="status"></p>
+</div>
+
+<script>
+    function uploadPDF() {
+        let fileInput = $("#pdfFile")[0].files[0];
+        if (!fileInput) {
+            alert("PDF 파일을 선택해주세요.");
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append("file", fileInput);
+
+        $.ajax({
+            type: "POST",
+            url: "/api/upload-pdf",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                $("#status").text("파일 업로드 성공!");
+            },
+            error: function() {
+                $("#status").text("파일 업로드 실패!");
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

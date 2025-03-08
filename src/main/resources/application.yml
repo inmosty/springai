@@ -1,0 +1,28 @@
+spring:
+  ai:
+    openai:
+      api-key: user-key
+      model: text-embedding-3-small #gpt-3.5-turbo  # ?? gpt-3.5-turbo
+    chroma:
+      enabled: true
+      url: http://localhost:8000
+      collection-name: my_collection
+      initializeSchema: true
+
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  datasource:
+    url: jdbc:h2:mem:testdb  # ???? H2 DB ??
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
