@@ -36,7 +36,11 @@ public class ChatService {
 
             // 2️⃣ ChromaDB에서 유사한 문서 검색
             List<String> relevantDocs = chromaQueryService.search(userMessage);
+            log.info("relevantDocs = {}", relevantDocs);
+
             String context = String.join("\n", relevantDocs);
+
+            log.info("context = {}", context);
 
             // 3️⃣ AI 프롬프트 구성
             List<Message> messages = List.of(

@@ -35,7 +35,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-chroma-store-spring-boot-starter'
     implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
     implementation 'com.h2database:h2'
-
+    implementation group: 'dev.langchain4j', name: 'langchain4j-chroma', version: '0.29.0'
     implementation 'org.apache.pdfbox:pdfbox:2.0.29' // PDF 처리
 
     compileOnly 'org.projectlombok:lombok'

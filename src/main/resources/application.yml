@@ -1,14 +1,17 @@
 spring:
   ai:
     openai:
-      api-key: user-key
+      api-key: your-key
       model: text-embedding-3-small #gpt-3.5-turbo  # ?? gpt-3.5-turbo
     chroma:
       enabled: true
       url: http://localhost:8000
       collection-name: my_collection
       initializeSchema: true
+      dimension: 1536
 
+  main:
+    allow-bean-definition-overriding: true
 
   servlet:
     multipart:
