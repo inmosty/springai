@@ -19,6 +19,9 @@ public class PdfUploadController {
 
     private final PdfService pdfService;
 
+    /**
+     * PDF 파일을 업로드하고 ChromaDB에 저장하는 API 엔드포인트
+     */
     @PostMapping("/upload-pdf")
     public ResponseEntity<String> uploadPDF(@RequestParam("file") MultipartFile file) {
         // 10MB 제한

@@ -14,16 +14,25 @@ public class ChatController {
         this.chatService = chatService;
     }
 
+    /**
+     * 채팅 페이지를 반환
+     */
     @GetMapping("/")
     public String chatPage(Model model) {
         return "chat";  // Thymeleaf 템플릿 반환
     }
 
+    /**
+     * PDF 업로드 페이지를 반환
+     */
     @GetMapping("/pdf")
     public String pdfUpload(Model model) {
         return "pdf_upload";  // Thymeleaf 템플릿 반환
     }
 
+    /**
+     * 사용자의 채팅 요청을 처리하는 API 엔드포인트
+     */
     @PostMapping("/api/chat")
     @ResponseBody
     public String chat(@RequestBody ChatRequest request) {

@@ -23,6 +23,9 @@ public class ChatService {
     private final ChromaService chromaService;
     private final VectorStore vectorStore;
 
+    /**
+     * 사용자의 입력 메시지를 ChromaDB에 저장하고, 유사한 문서를 검색하여 AI 응답을 반환
+     */
     public String chat(String userMessage) {
         try {
             // 1️⃣ 사용자의 채팅 메시지를 먼저 ChromaDB에 저장

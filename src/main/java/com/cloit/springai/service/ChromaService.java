@@ -21,6 +21,9 @@ public class ChromaService {
         this.embeddingModel = embeddingModel;
     }
 
+    /**
+     * 텍스트 데이터를 벡터로 변환하여 ChromaDB에 저장
+     */
     public void saveTextToChroma(String text) {
         log.info("🔵 ChromaDB 저장 시작: {}", text);
 
