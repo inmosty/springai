@@ -21,6 +21,16 @@
    docker run -d --name chromadb -p 8000:8000 ghcr.io/chroma-core/chroma:0.4.24
    ```
 
+   ```
+   설치확인
+   curl -X GET "http://localhost:8000/api/v1/collections"
+   
+   db 생성
+   curl -X POST "http://localhost:8000/api/v1/collections"  -H "Content-Type: application/json" -d '{"name": "my_collection", "dimension": 1536}'
+   ```
+   
+
+
 2. ``** 설정**
 
    ```yaml
