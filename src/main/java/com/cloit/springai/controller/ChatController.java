@@ -2,17 +2,15 @@ package com.cloit.springai.controller;
 
 import com.cloit.springai.request.ChatRequest;
 import com.cloit.springai.service.ChatService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @Controller
 public class ChatController {
     private final ChatService chatService;
-
-    public ChatController(ChatService chatService) {
-        this.chatService = chatService;
-    }
 
     /**
      * 채팅 페이지를 반환

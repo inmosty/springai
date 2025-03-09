@@ -1,5 +1,6 @@
 package com.cloit.springai.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
@@ -11,15 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service
 public class ChromaService {
     private final VectorStore vectorStore;
     private final EmbeddingModel embeddingModel;
-
-    public ChromaService(VectorStore vectorStore, EmbeddingModel embeddingModel) {
-        this.vectorStore = vectorStore;
-        this.embeddingModel = embeddingModel;
-    }
 
     /**
      * 텍스트 데이터를 벡터로 변환하여 ChromaDB에 저장
